@@ -1,0 +1,21 @@
+/* 
+	Deloitte Jobs : IE Specific Hacks
+	Developer: Michael "Spell" Spellacy, Lead User Interface Developer, michael.spellacy[at]tmp.com, @spellacy
+*/
+
+@media screen, projection {
+
+	#tmp-content {
+
+		form.page > a, div.page > a {
+		zoom: 1;
+		}
+
+		#search-jobs select, #search-jobs input[type="text"] {
+		display: block;
+		width: 185px;
+		}
+
+	}
+
+}

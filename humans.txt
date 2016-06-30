@@ -1,0 +1,30 @@
+This website is brought to you by the following people and also the letter "C"...
+
+/* Team */
+
+	Chief Cook and Bottle Washer: First Name
+	Contact: name [at] domain.com
+	Twitter: @twittername
+
+	Development: First Name
+	Contact: name [at] domain.com
+	Twitter: @twittername
+
+	Vision: First Name
+	Contact: name [at] domain.com
+	Twitter: @twittername
+
+	Words: First Name
+	Contact: name [at] domain.com
+	Twitter: @twittername
+
+/* Special Thanks */
+
+	Add here
+
+/* Site */
+
+	Language: English
+	Doctype: HTML5
+	IDE: Visual Studio, UltraEdit, Notepad++, Dreamweaver, Photoshop
+

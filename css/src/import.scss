@@ -1,0 +1,1111 @@
+/* 
+	Deloitte Jobs : Import Stylesheet
+	Developer: Michael "Spell" Spellacy, Lead User Interface Developer, michael.spellacy[at]tmp.com, @spellacy
+*/ 
+
+// Some useful variables 
+
+$text-offscreen: -999em;
+$neutral-color: #ccc;
+$base-font: Arial, Verdana, sans-serif, Myuen, Gulim;
+$attn-color: #008fd3;
+
+@import "mixins/compass/css3";  
+
+@media screen, projection, print {
+
+	/* ====== Global Rules ====== */
+
+	// HACK: Deloitte Template Garbage Clean-up
+
+	html {
+	overflow-x: visible !important;
+	}
+
+	div[class=""]  > h2, div[class=""]  > h2 + p, #tmp-content + p, #socialShare + #featuredCreative > p{
+	display: none;
+	}
+
+	// HACK: There is an extra featuredCreative div on details page and apply page that Deloitte needs 
+	// to remove from their template, for now, we hit it with a hammer...
+
+	/* #featuredCreative{
+	clear: none;
+	max-height: none;
+	margin: 0;
+	}*/
+
+	// Hide Cloned Navigation
+
+	#mobile-menu, #nav {
+	display: none;
+	}
+	
+	/* TMP Layout */
+
+	#tmp-content {
+	margin: 0;
+	padding:  0;
+	color: #000;
+
+		form, fieldset, legend, h1, h2, h3, h4, h5, h6 { 
+		margin: 0;
+		padding: 0; 
+		}
+
+		h1 {
+		margin: 0 0 1em;
+		padding: 0.5em 0 0.2em 0;
+		}
+
+		h3, h4 {
+		color: #666;
+		}
+
+		img, object, embed, video {
+		display: block;
+		max-width: 100%;
+		border: none;
+		}
+
+		img, fieldset {
+		border: none;
+		}
+
+		label {
+		cursor: pointer;
+		}
+
+		select, input, textarea, a.button, a.submit {
+		border: 1px $neutral-color solid;
+		height: auto;
+		@include box-shadow(0 2px 6px #a2a0a0);
+		}
+
+		input[type="radio"] {
+		@include box-shadow(none);
+		}
+
+		input.submit, a.button, a.submit {
+		display: inline-block;
+		margin: 1em 1em 1em 0;
+		padding: 0.4em 2em 0.4em 0.7em;
+		line-height: 1.5;
+		border: 1px $attn-color solid;
+		background: $attn-color image-url("btn-submit.png")right center no-repeat;
+		font-family: $base-font;
+		font-weight: bolder;
+		color: #fff;
+		text-decoration: none;
+		text-shadow: 0 1px 1px #666;
+		@include border-radius(6px);
+		cursor: pointer;
+		}
+
+		/* Form and/or Page messages */
+
+		.alert, .alert a {
+		font-style: italic;
+		text-decoration: none;
+		color: #c00 !important;
+		text-transform: none !important;
+		}
+
+		/* Used to accessibly hide elements (display: none may cause issues with screen readers) */
+
+		.wai {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 0;
+		text-indent: $text-offscreen;
+		}
+
+		/* First and last elements */
+
+		.first-child, li.first-child a, .last-child, li.last-child a {
+		border: none !important;
+		background: none !important;
+		}
+
+		.page  > a {
+		display: none;
+		}
+
+		/* ====== Search Form (default.aspx) ====== */
+
+		#search-jobs, #search-jobs p {
+		font-size: 0.8125em; // 13px / 16px
+
+			fieldset {
+			margin: 0 0 1em;
+			padding: 0;
+			}
+
+			legend {
+			display: block;
+			font-weight: bold;
+			padding: 0.5em 0 1em;
+			color: #333;
+			}
+
+			select, 	input[type="text"] {
+			display: block;
+			height: auto;
+			margin: 0;
+			min-width: 185px;
+			font-size: inherit;
+			border: 1px #ccc solid;
+			}
+
+			select:focus, 	input[type="radio"]:focus, input[type="text"]:focus {
+			border: 1px #008fd3 solid;
+			}
+
+			select + select {
+			margin-top: 1.4em;
+			}
+
+			p label, p input {
+			vertical-align: middle;
+			}
+
+			p {
+			margin: 0.4em 0 1.4em;
+
+				label {
+				font-style: italic;
+				padding-right: 1em;
+				}
+
+			}
+
+			input[type="radio"] {
+			border: none;
+			}
+
+			.multiple-select select, .multiple-select .buttons {
+			float: left;
+			}
+
+			.multiple-select {
+
+				.buttons {
+				margin-top: 1.4em;
+				width: 50px;
+				}
+
+				select {
+				width: 185px;
+				height: 100px;
+				}
+
+				a {
+				display: block;
+				width: 30px;
+				height: 18px;
+				margin: 0.8em;
+				border: none;
+				background: #9c0 image-url("btn-form-add.gif") top center no-repeat;
+				text-indent: $text-offscreen;
+				overflow: hidden;
+
+					&.remove {
+					background: #9c0 image-url("btn-form-rem.gif") top center no-repeat;
+					}
+
+				}
+
+			}
+
+			input.submit {
+			margin-top: 1em;
+			font-size: 0.92307692em; // 12px / 13px
+			}
+
+		}
+
+		/* ====== Search Results (results.aspx) ====== */
+
+		p.rss-feed {
+		margin:  1.5em 0;
+		padding: 0;
+
+			a {
+			display: inline-block;
+			padding-left: 2em;
+			font-weight: bold;
+			background: image-url("ico-feed.gif") left 1px no-repeat;
+			}
+
+		}
+
+		/* ====== Job Details (details.aspx) ====== */
+
+		#custom-media {
+		margin-bottom: 1.5em;
+		}
+
+		.job-overview {
+
+			p {
+			margin: 0.2em 0;
+			}
+
+			ul {
+			margin: 0.5em 0 1em;
+			padding: 0;
+			}
+
+			li {
+			display: inline;
+			padding-right: 0.3em;
+
+				&:after{
+				content: ", ";
+				}
+
+				&:last-child:after{
+				content: "";
+				}
+
+			}
+
+		}// job-overview
+
+		h2.job-description {
+		margin: 1.2em 0;
+		}
+
+		p.apply-now {
+		margin: 0;
+		padding: 0;
+		line-height: normal;
+
+			span {
+			display: none;
+
+				a.button {
+				margin-left: 0.8em;
+				}
+
+			}
+
+		}
+
+		h2.job-description + p.apply-now a {
+		margin: 0 0 1em;
+		}
+
+		p.view-page {
+		margin-top: 1.2em;
+
+			a {
+			position: relative;
+			padding-left: 15px;
+
+				&:after {
+				content: "\00a0"; /* &nbsp; */
+				position: absolute;
+				bottom: 0.4em;
+				left: 0;
+				display: block;
+				width: 0;
+				height: 0;
+				border-width: 3px 5px 3px 0;
+				border-style: solid;
+				border-color: transparent $attn-color transparent transparent;
+				}
+
+			}
+
+		}
+
+		/* Datagrid */
+
+		@import "datagrid";
+
+		.job-message {
+		margin-bottom: 1.5em;
+		padding: 0.5em 1.2em;
+		border: 2px #c4d703 solid;
+		border-bottom: 3px #c4d703 solid;
+		font-size: 1.1em;
+		background-color: #d9e750; // Old browsers
+		@include filter-gradient(#d9e750, #c9dd03, vertical); // IE6-8
+		// IE9 SVG, needs conditional override of 'filter' to 'none'
+		$experimental-support-for-svg: true;
+		@include background-image(linear-gradient(top,  hsl(66,76%,61%) 0%,hsl(65,76%,60%) 8%,hsl(66,76%,53%) 28%,hsl(66,96%,44%) 47%,hsl(66,97%,44%) 100%));
+		@include border-radius(6px);
+		@include box-shadow(0 1px 2px #a2a0a0);
+
+			p {
+			margin: 0;
+			padding: 0;
+
+				a {
+				color: #036;
+				text-shadow: 1px 1px 0 #ccc;
+				}
+
+			}
+
+		}// job-message
+
+		p.country-name {
+		display: none;
+		margin: 0.8em 0 0;
+		text-align: right;
+		color: #666;
+		}
+
+		#social-tmp {
+		display: none;
+		margin: 1em 0 1.2em;
+		padding: 1em 0.5em;
+		background: #eee; 
+		border: 2px #fff solid;
+		@include border-radius(6px);
+		@include box-shadow(0 1px 2px #a2a0a0);
+		}
+
+		p.back-to-top {
+		display: none;
+		text-align: right;
+		}
+
+		p.back-to-top a {
+		position: relative;
+		padding-left: 15px;
+
+			&:after {
+			content: "\00a0"; /* &nbsp; */
+			position: absolute;
+			bottom: 0.4em;
+			left: 0;
+			display: block;
+			width: 0;
+			height: 0;
+			border-width: 0 3px 5px 3px;
+			border-style: solid;
+			border-color: transparent transparent $attn-color transparent;
+			}
+
+		}
+
+		/* ====== Page Overrides ====== */
+
+		/* Apply Page (apply.aspx) */
+
+		&.apply {
+
+			a.button {
+			display: none;
+			}
+
+			iframe {
+			width: 100%;
+			height: 5000px;	
+			}
+
+		}
+
+		/* ====== CSS Hacks ====== */
+
+		#selectservicejobtype:after, page:after {
+		content: " "; 
+		display: block; 
+		height: 0; 
+		clear: both; 
+		visibility: hidden;
+		}
+
+		img.bunny {
+		float: right;
+		margin: 0 200px 20px 20px;
+		border: 5px #fff solid;
+		border-bottom:  50px #fff solid;
+		@include rotate(9);
+		@include box-shadow(-3px 3px 20px #a2a0a0);
+		-webkit-transition: -webkit-transform .75s ease-in-out, opacity .3s ease-in;
+		-moz-transition: -moz-transform .75s ease-in-out, opacity .3s ease-in;
+		-o-transition: -o-transform .75s ease-in-out, opacity .3s ease-in;
+		transition: transform .75s ease-in-out, opacity .3s ease-in;
+		cursor: pointer;
+		opacity: 0.8;
+
+			&:hover {
+			-webkit-transform: scale(1.5) rotate(-9deg);
+			-moz-transform: scale(1.5) rotate(-9deg);
+			-o-transform: scale(1.5) rotate(-9deg);
+			transform: scale(1.5) rotate(-9deg);
+			opacity: 1;
+			z-index: 2;
+			}
+
+		}
+
+	}/* #tmp-content */ 
+
+	/* ====== Desktop: JS Enabled Behavior ====== */
+
+	.js {
+
+		.ui-tabs-hide, table.datagrid td div {
+		display: none;
+		}
+
+	}
+
+	/* ====== Job Posting Area ====== */
+
+	#content #job-post {
+	font-size: 0.75em !important;
+	margin: 1.2em 0;
+
+		@import "post";
+
+	}
+
+	/* ====== Ajax Loader ====== */
+
+	#ctl00_updateprogress {
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+
+		.ajaxload {
+		width: 44px;
+		height: 44px;
+		background-position: center;
+		background-repeat: no-repeat;
+		border: 1px #006 dotted;
+		margin: 0;
+		padding:  0.5em;
+		background: #fff image-url("ani-ajax.gif") center no-repeat;
+		text-indent: $text-offscreen;
+		@include border-radius(6px);
+		}
+
+	}
+
+}
+
+@media screen and (max-width:600px), print {
+
+		// Hide Various Elements
+
+		body > iframe, #_atssh, #contentSearch, #globalNavBar, #socialNetwork, #breadcrumbs, #featuredCreative:nth-child(1), #languageLinks, #tools, #socialShare, #rightRail, #overlayMask, #quickLinks, #fb-root, .mobile #megaMenu  {
+		display: none;
+		}
+
+		img {
+		display: block;
+		max-width: 100%;
+		}
+
+		// Reset Styles
+
+		html, #mainContent, #header, #content, .container, #footer, #footer ul, #footer .copyright, #content #featuredCreative, li:hover, #megaMenu, #megaMenu ul, #megaMenu  li, #megaMenu  li a, #megaMenu  li a:hover{
+		position: static;
+		float: none;
+		clear: none;
+		overflow-x: visible;
+		width: auto;
+		max-width: none;
+		min-width: 0;
+		min-height: 0;
+		max-width: none;
+		max-height: none;
+		margin: 0;
+		padding: 0;
+		background: none;
+		@include box-shadow(none);
+		}
+
+		#header {
+		position: relative;
+		min-height: 50px;
+		padding-left: 1em;
+
+			#mobile-menu {
+			display: block;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			padding: 0.3em 0.6em;
+			border: 2px #fff outset;
+			font-size: 0.8em;
+			color: #fff;
+			@include border-radius(6px);
+
+				&.on {
+				border: 2px #fff inset;
+				}
+
+			}
+
+		}// #header
+
+		#content, .centerColTwoRight #content, .centerColOne #content{
+		margin: 0.5em 0.8em;
+		}
+
+		/* TMP Layout */
+
+		#tmp-content {
+		position: static;
+		padding: 0;
+
+			input.submit, a.button, a.submit {
+
+				&:hover {
+				border: 1px #b9d400 solid;
+				background-color: #b9d400;
+				text-shadow: 0 1px 1px #000;
+				}
+
+			}
+
+			/* Nav */
+
+			#nav {
+			margin: 0.5em -0.8em;
+			padding: 0 0.8em 0.8em;
+			font-size: 1em; 
+			list-style: none;
+			text-align: center;
+			background-color: #ffffff; // Old browsers
+			@include filter-gradient(#ffffff, #e5e5e5, vertical); // IE6-8
+			$experimental-support-for-svg: true;
+			@include background-image(linear-gradient(top,  hsl(0,0%,100%) 0%,hsl(0,0%,90%) 100%));
+
+				li {
+				display: inline-block;
+				padding: 0.4em;
+
+					a {
+					display: inline-block;
+					padding: 0.2em 0.6em;
+					color: #036;
+					@include border-radius(3px);
+
+						&:hover, &:focus {
+						background: #fff;
+						color: #92D400;
+						@include box-shadow(0 2px 6px #a2a0a0);
+						}
+
+					}
+
+				}
+
+			}
+
+			#search-jobs {
+
+				.desktop, input[type="radio"] {
+				display: none;
+				}
+
+				input[type="text"], select {
+				padding: 0.2em;
+				}
+
+				p {
+				margin: 0;
+
+					label {
+					display: inline-block;
+					padding: 0.5em;
+					min-width: 72px;
+					background: #ccc;
+					color: #000;
+					text-align: center;
+					margin: 0 0.5em 1.4em 0;
+					border: 1px outset #fff;
+					@include border-radius(6px);
+					@include box-shadow(0 2px 6px #a2a0a0);
+
+						&.radio-focus {
+						background: #008fd3;
+						border: 1px inset #666;
+						color: #fff;
+						@include box-shadow(none);
+						}
+
+					}
+
+				}
+
+				.category {
+				background-color: #eee;
+				padding: 1em 0.8em;
+				margin-left: -0.6em;
+				border: 2px #fff solid;
+				@include border-radius(6px);
+				@include box-shadow(0 1px 2px #a2a0a0);
+				}
+
+			}
+
+			p.rss-feed {
+			margin-bottom: 0;
+			}
+
+			p.rss-feed + div {
+			margin-top: 1em;
+			}
+
+			/* Datagrid */
+
+			table.datagrid {
+			width: 100%;
+
+				tr.odd, tr.even {
+				@include linear-gradient(#fff, #eee)
+				}
+
+				tr.odd td a, tr.even td a {
+
+					&.button:hover {
+					background-color: #b9d400;
+					}
+
+				}
+
+				th {
+				display: none;
+				}
+
+				td {
+				width: auto;
+				display: block;
+				word-wrap: break-word;
+				}
+
+				tr.odd td.job-title a, tr.even td.job-title a {
+				display: block;
+				font-weight: bold;
+				padding: 0.8em;
+				@include border-radius(6px);
+				background: #008fd3;
+				color: #fff;
+
+					&:hover, &:active, &:focus   {
+					background: #b9d400;
+					color: #000;
+					}
+
+					&:visited{
+					background: #ccc;
+					color: #333;
+					}
+
+				}
+
+				tbody tr:first-child td[colspan="5"] table {
+				margin: 0;
+				}
+
+				tbody tr:first-child td[colspan="5"] table td:nth-child(1), tbody tr:first-child td[colspan="5"] table td:nth-child(3){
+				display: none;
+				}
+
+				tbody tr:first-child td[colspan="5"] table td:nth-child(2){
+				text-align: right;
+				padding: 0;
+				margin: 0 1em 1em;
+				font-weight: bold;
+
+					select {
+					width: auto;
+					padding: 0.2em;
+					margin-left: 0.8em; 
+					}
+
+				}
+
+				table { 
+
+					td {
+					width: auto;
+					padding: 0.8em 0;
+
+						&.pager {
+						text-align: left;
+						margin-top: 1em;
+						padding-bottom: 0;
+
+							i {
+							display: none;
+							}
+
+							a, span, b {
+							padding: 1.2em 1.4em;
+							margin-right: 0.2em;
+							font-size: 1.1em;
+							}
+
+							a:focus, a:active {
+							background-color: #b9d400;
+							color: #000;
+							}
+
+							.prev, .next {
+							padding: 1.2em;
+							margin: 0 0.6em;
+
+								&:hover, &:focus {
+								background-color: #b9d400;
+								}
+
+							}
+
+							.next {
+							margin-left: 0.4em;
+							margin-right: 0.1em;
+							}
+
+							.prev {
+							margin-left: 0;
+							}
+
+						}
+
+					}// td 
+
+				}// table
+
+				div table  {
+				margin: 0;
+
+					tr {
+					display: block;
+					padding: 0.5em 0;
+					}
+
+					td {
+					display: inline-block; 
+					width: auto;
+					margin: 0;
+					padding: 0 0.2em 0 0 !important;
+
+						&:after{
+						content: ", ";
+						}
+
+						&:last-child:after{
+						content: "";
+						}
+
+					}
+
+				}
+
+				tbody tr:last-child td[colspan="5"] table td:nth-child(2){
+				display: none;
+				}
+
+				tbody tr:last-child td[colspan="5"] .pager{
+				margin: 0 1em;
+				float: right;
+				}
+
+				/* tbody tr:last-child td[colspan="5"]  {
+
+					td {
+					display: inline-block;
+
+						&:nth-child(2) {
+						margin-left: 1em;
+						}
+
+					}
+
+				}*/
+
+				/* ====== Multiple Locations ====== */
+
+				td a:link.locations {
+				margin: 0.8em 0;
+				}
+
+			}// table.datagrid
+
+			h2.job-description + p.apply-now {
+			display: none;
+			}
+
+			p.apply-now span {
+			display: inline;
+			}
+
+			p.country-name, #social-tmp, p.back-to-top  {
+			display: block;
+			}
+
+			p.view-page {
+			text-align: right;
+			}
+
+			p.back-to-top {
+			margin-top: 1.2em;
+			}
+
+			/* ====== Page Overrides ====== */
+
+			/* Cache Control (cache.aspx) */
+
+			&.cache table.datagrid {
+
+				tr.odd td, tr.even td {
+
+					&:nth-child(2) {
+					display: block;
+					width: 268px;
+
+						&:before {
+						content :("Cache Key: ");
+						}
+
+					}
+
+					&:nth-child(3) {
+
+						&:before {
+						content :("Object Type: ");
+						}
+
+					}
+
+					&:nth-child(4) {
+
+						&:before {
+						content :("Size: ");
+						}
+
+					}
+
+				}
+
+			}// #tmp-content.cache table.datagrid
+
+			.job-message {
+			font-size:  1.2em;
+			}
+
+			/* Apply Page (apply.aspx) */
+
+			&.apply {
+
+				a.button {
+				display: inline-block;
+				}
+
+				p.back-to-top {
+				display: none;
+				}
+
+			}
+
+	}/* #tmp-content */
+
+	/* Mobile: JS Enabled Behavior */
+
+	.js {
+
+		body#apply iframe {
+		display: none;
+		}
+
+	}
+
+	#ctl00_updateprogress {
+	background: #036;
+	opacity: 0.9;
+	}
+
+	#footer{
+	margin-top: 2em;
+	padding: 1.2em;
+	}
+
+	#footer ul {
+	margin: 0 0  1.4em;
+	}
+
+	#footer li {
+	display: inline-block !important;
+	line-height: 2.5;
+	}
+
+	#footer p {
+	margin-bottom: 1.5em;
+	}
+
+	#footer li:empty {
+	display: none;
+	}
+
+}
+
+@media screen and (min-width:601px) {
+
+	#nav {
+	display: none !important;
+	}
+
+}
+
+@media screen and (max-width: 480px){
+
+	/* Datagrid */
+
+	table.datagrid {
+
+		table { 
+
+			td {
+
+				&.pager {
+
+					a, span, b {
+					padding: 0.5em  0.7em !important;
+					}
+
+					.prev, .next {
+					padding: 0.5em !important;
+					}
+
+				}
+
+			}// td
+
+		}// table
+
+	}// table.datagrid
+
+}
+
+@media screen and (max-width: 320px){
+
+	/* Datagrid */
+
+	table.datagrid {
+
+		table { 
+
+			td {
+
+				&.pager {
+
+					a, span, b {
+					padding: 0.4em  0.6em !important;
+					}
+
+					.prev, .next {
+					padding: 0.4em !important;
+					}
+
+				}
+
+			}// td
+
+		}// table
+
+	}// table.datagrid
+
+}
+
+@media print {
+
+	// TODO: Fix header in template not loaded by Deloitte.
+
+	body {
+	background: none;
+	}
+
+	#header #mobile-menu  {
+	display: none ;
+	}
+
+	#tmp-content {
+
+		p.rss-feed, .view-page, p.apply-now span, .job-message, #social-tmp, p.back-to-top {
+		display: none;
+		}
+
+		table.datagrid { 
+
+			td.job-title a {
+			border: 1px #000 solid;
+			}
+
+			tbody tr:first-child td[colspan="5"] table td:nth-child(2), tbody tr:last-child td[colspan="5"]  {
+			display: none;
+			}
+
+		}
+
+		/* ====== Page Overrides ====== */
+
+			/* Cache Control (cache.aspx) */
+
+			&.cache  {
+
+				.button {
+				display: none;
+				}
+
+				table.datagrid {
+
+					tr.odd td, tr.even td {
+
+						&:nth-child(1) {
+						display: none;
+						}
+
+						&:nth-child(2) {
+						width: auto;
+						}
+
+					}
+
+				}
+
+			}
+
+		/* Details Page (details.aspx) */
+
+		&.details a:after {
+		content: " (" attr(href) ") ";
+		}
+		
+		/* Apply Page (apply.aspx) */
+
+		&.apply { 
+
+			a.button {
+			display: none;
+			}
+
+		}
+
+	}
+
+	/* Print: JS Enabled Behavior */
+
+	.js {
+
+		body#apply iframe, .ui-tabs-hide, table.datagrid td div {
+		display: block ;
+		}
+
+	}
+
+}

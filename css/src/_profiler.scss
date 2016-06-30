@@ -1,0 +1,39 @@
+/* 
+	Deloitte Jobs : Job postings
+	Developer: Michael "Spell" Spellacy, Lead User Interface Developer, michael.spellacy[at]tmp.com, @spellacy
+*/ 
+
+	/* Content Fixes */
+
+	.MsoNormal, .MsoListParagraph, .MsoListParagraph span, span, p  { // Override MS Word junk
+	font-size: 1em !important;
+	line-height: 1.5 !important;
+	font-family: $base-font !important; 
+	text-align: left !important;
+	padding: 0 !important;
+	margin: 1em 0 !important;
+	}
+
+	p, li { // Override MS Word junk
+	font-size: 1em !important;
+	}
+
+	ul {
+	padding-top: 0;
+	padding-bottom: 0;
+	margin: 1em 0;
+	}
+
+	p:empty {
+	display: none;
+	}
+
+	*[lang="EN-GB"] {
+	line-height: 1.5 !important;
+	font-family: $base-font !important; 
+	text-align: left !important;
+	}
+
+	span[style=""] {
+	display: inline !important;
+	}
